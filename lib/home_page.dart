@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
             return ListView.builder(
               itemBuilder: (BuildContext context, int index) {
                 return index >= state.posts.length
-                    ? CircularProgressIndicator()
+                    ? BottomLoader()
                     : PostWidget(post: state.posts[index]);
               },
               itemCount: state.hasReachedMax
@@ -68,5 +68,23 @@ class _HomePageState extends State<HomePage> {
     if (maxScroll - currentScroll <= _scrollThreshold) {
       _postBloc.dispatch(Fetch());
     }
+  }
+}
+
+class BottomLoader extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      child: Center(
+        child: SizedBox(
+          width: 33,
+          height: 33,
+          child: CircularProgressIndicator(
+            strokeWidth: 1.5,
+          ),
+        ),
+      ),
+    );
   }
 }
