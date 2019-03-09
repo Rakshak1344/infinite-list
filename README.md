@@ -1,4 +1,4 @@
-# fire
+# Infinite list
 
 A new Flutter project.
 
